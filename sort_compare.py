@@ -123,13 +123,13 @@ if __name__ == "__main__":
     avg_time = total_time / 100
     print(f"Insertion sort took {avg_time:10.7f} seconds to run, on average for a list of {list_sizes[1]} elements")
 
-    #total_time = 0
-   # for i in range(100):
-        #mylist5000 = get_me_random_list(list_sizes[2])
-        #start = time.time()
-        #insertion_sort(mylist5000)
-        #time_spent = time.time() - start
-        #total_time += time_spent
+    total_time = 0
+    for i in range(100):
+        mylist5000 = get_me_random_list(list_sizes[2])
+        start = time.time()
+        insertion_sort(mylist5000)
+        time_spent = time.time() - start
+        total_time += time_spent
 
     avg_time = total_time / 100
     print(f"Insertion sort took {avg_time:10.7f} seconds to run, on average for a list of {list_sizes[2]} elements")

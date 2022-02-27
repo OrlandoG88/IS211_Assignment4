@@ -1,4 +1,4 @@
-import argparse
+
 # other imports go here
 import time
 import random
@@ -15,7 +15,6 @@ def get_me_random_list(n):
     return a_list
 
 
-
 def sequential_search(a_list, item):
     pos = 0
 
@@ -28,46 +27,41 @@ def sequential_search(a_list, item):
     return found
 
 
-
 def ordered_sequential_search(a_list, item):
-    def ordered_sequential_search(a_list, item):
-        pos = 0
-
-        found = False
-        stop = False
-        while pos < len(a_list) and not found and not stop:
-            if a_list[pos] == item:
-                found = True
+    pos = 0
+    found = False
+    stop = False
+    while pos < len(a_list) and not found and not stop:
+        if a_list[pos] == item:
+            found = True
         else:
             if a_list[pos] > item:
                 stop = True
             else:
-                pos = pos + 1
-        return found
+                pos = pos+1
 
+    return found
 
 
 def binary_search_iterative(a_list, item):
-    def binary_search(a_list, item):
-        first = 0
+    first = 0
 
-        last = len(a_list) - 1
-        found = False
-        while first <= last and not found:
-            midpoint = (first + last) // 2
-            if a_list[midpoint] == item:
-                found = True
-            else:
-                if item < a_list[midpoint]:
-                    last = midpoint - 1
+    last = len(a_list) - 1
+    found = False
+    while first <= last and not found:
+        midpoint = (first + last) // 2
+        if a_list[midpoint] == item:
+            found = True
         else:
-                first = midpoint + 1
-        return found
+            if item < a_list[midpoint]:
+                last = midpoint - 1
+    else:
+            first = midpoint + 1
+    return found
 
 
 
 def binary_search_recursive(a_list, item):
- def binary_search_recursive(a_list, item):
     if len(a_list) == 0:
         return False
 
@@ -77,22 +71,27 @@ def binary_search_recursive(a_list, item):
         return True
     else:
         if item < a_list[midpoint]:
-            return binary_search(a_list[:midpoint], item)
+            return binary_search_recursive(a_list[:midpoint], item)
         else:
-            return binary_search(a_list[midpoint + 1:], item)
+            return binary_search_recursive(a_list[midpoint + 1:], item)
 
 
 
 if __name__ == "__main__":
     """Main entry point"""
+    list_sizes = [500, 1000, 5000]
+    #the_size = list_sizes
+
+
+
     total_time = 0
     for i in range(100):
 
         myList500 = get_me_random_list(500)
-        sorted_list = myList500.sort()
+        sorted_list = sorted(myList500)
 
         starttime = time.time()
-        ordered_sequential_search(sorted_list, 9999)
+        ordered_sequential_search(sorted_list, -1)
         time_spent = time.time() - starttime
         total_time += time_spent
 
@@ -105,10 +104,10 @@ if __name__ == "__main__":
     total_time = 0
     for i in range(100):
         myList1000 = get_me_random_list(1000)
-        sorted_list = myList1000.sort()
+        sorted_list = sorted(myList1000)
 
         starttime = time.time()
-        ordered_sequential_search(sorted_list, 9999)
+        ordered_sequential_search(sorted_list, -1)
         time_spent = time.time() - starttime
         total_time += time_spent
 
@@ -118,10 +117,10 @@ if __name__ == "__main__":
     total_time = 0
     for i in range(100):
         myList5000 = get_me_random_list(5000)
-        sorted_list = myList5000.sort()
+        sorted_list = sorted(myList5000)
 
         starttime = time.time()
-        ordered_sequential_search(sorted_list, 9999)
+        ordered_sequential_search(sorted_list, -1)
         time_spent = time.time() - starttime
         total_time += time_spent
 
@@ -134,7 +133,7 @@ if __name__ == "__main__":
         #sorted_list = myList500.sort()
 
         starttime = time.time()
-        sequential_search(myList500, 9999)
+        sequential_search(myList500, -1)
         time_spent = time.time() - starttime
         total_time += time_spent
 
@@ -147,7 +146,7 @@ if __name__ == "__main__":
         # sorted_list = myList500.sort()
 
         starttime = time.time()
-        sequential_search(myList1000, 9999)
+        sequential_search(myList1000, -1)
         time_spent = time.time() - starttime
         total_time += time_spent
 
@@ -160,7 +159,7 @@ if __name__ == "__main__":
         # sorted_list = myList500.sort()
 
         starttime = time.time()
-        sequential_search(myList5000, 9999)
+        sequential_search(myList5000, -1)
         time_spent = time.time() - starttime
         total_time += time_spent
 
@@ -170,10 +169,10 @@ if __name__ == "__main__":
     total_time = 0
     for i in range(100):
         myList500 = get_me_random_list(500)
-        sorted_list = myList500.sort()
+        sorted_list = sorted(myList500)
 
         starttime = time.time()
-        binary_search_iterative(sorted_list, 9999)
+        binary_search_iterative(sorted_list, -1)
         time_spent = time.time() - starttime
         total_time += time_spent
 
@@ -183,10 +182,10 @@ if __name__ == "__main__":
     total_time = 0
     for i in range(100):
         myList1000 = get_me_random_list(1000)
-        sorted_list = myList1000.sort()
+        sorted_list = sorted(myList1000)
 
         starttime = time.time()
-        binary_search_iterative(sorted_list, 9999)
+        binary_search_iterative(sorted_list, -1)
         time_spent = time.time() - starttime
         total_time += time_spent
 
@@ -196,10 +195,10 @@ if __name__ == "__main__":
     total_time = 0
     for i in range(100):
         myList5000 = get_me_random_list(5000)
-        sorted_list = myList5000.sort()
+        sorted_list = sorted(myList5000)
 
         starttime = time.time()
-        binary_search_iterative(sorted_list, 9999)
+        binary_search_iterative(sorted_list, -1)
         time_spent = time.time() - starttime
         total_time += time_spent
 
@@ -209,10 +208,10 @@ if __name__ == "__main__":
     total_time = 0
     for i in range(100):
         myList500 = get_me_random_list(500)
-        sorted_list = myList500.sort()
+        sorted_list = sorted(myList500)
 
         starttime = time.time()
-        binary_search_recursive(sorted_list, 9999)
+        binary_search_recursive(sorted_list, -1)
         time_spent = time.time() - starttime
         total_time += time_spent
 
@@ -222,10 +221,10 @@ if __name__ == "__main__":
     total_time = 0
     for i in range(100):
         myList1000 = get_me_random_list(1000)
-        sorted_list = myList1000.sort()
+        sorted_list = sorted(myList1000)
 
         starttime = time.time()
-        binary_search_recursive(sorted_list, 9999)
+        binary_search_recursive(sorted_list, -1)
         time_spent = time.time() - starttime
         total_time += time_spent
 
@@ -235,10 +234,10 @@ if __name__ == "__main__":
     total_time = 0
     for i in range(100):
         myList5000 = get_me_random_list(5000)
-        sorted_list = myList5000.sort()
+        sorted_list = sorted(myList5000)
 
         starttime = time.time()
-        binary_search_recursive(sorted_list, 9999)
+        binary_search_recursive(sorted_list, -1)
         time_spent = time.time() - starttime
         total_time += time_spent
 
